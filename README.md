@@ -1,0 +1,1 @@
+This project it's a Password Generator, it helps to create random passwords
