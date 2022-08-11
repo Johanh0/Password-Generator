@@ -30,7 +30,7 @@ header {
   text-align: center;
   padding: 20px;
   padding-top: 0px;
-  color: hsl(206, 17%, 28%);
+  color: #2C2C2C;
 }
 
 .card {
@@ -38,7 +38,7 @@ header {
   border-radius: 5px;
   border-width: 1px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
-  color: hsl(206, 17%, 28%);
+  color: #2C2C2C;
   font-size: 18px;
   margin: 0 auto;
   max-width: 800px;
@@ -142,7 +142,7 @@ button[disabled] {
 
 
 
-/* NEW CODE */
+/* NEW SECTION (COPY AND SHOW)*/
 
 .card-2 {
     margin-top: 50px;
@@ -168,3 +168,4 @@ button[disabled] {
 .btn-show {
    margin-left: 50px;
 }
+

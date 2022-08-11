@@ -18,12 +18,13 @@
                 <h2>Generate a Password</h2>
             </div>
             <div class="card-body">
-                <textarea
+                <input
+                type="password"
                 readonly
                 id="password"
                 placeholder="Your Secure Password"
                 aria-label="Generated Password"
-                ></textarea>
+                ></input>
             </div>
             <div class="card-footer">
                  <button id="generate" class="btn">Generate Password</button>
@@ -31,9 +32,9 @@
         </div>
         <div class="card card-2">
             <button class="btn-copy">Copy Password <i class="fa-solid fa-copy"></i></button>
-            <button class="btn-show">Show Password <i class="fa-solid fa-eye"></i></button>
+            <button class="btn-show"><span id="show-txt">Show</span> Password <i class="fa-solid fa-eye"></i></button>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
   </body>
 </html>
