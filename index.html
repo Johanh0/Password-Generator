@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <main>
+        <section>
+            <div class="div-title">
+                <h1>Password Generator</h1>
+            </div>
+
+            <div class="div-result">
+                <div class="div-result_input">
+                    <input type="text" placeholder="P4$5W0rD!">
+                </div>
+                <div class="div-result_icon">
+                    <i class="fa-solid fa-copy"></i>
+                </div>
+            </div>
+
+            <div class="div-card">
+                <div>
+                    <div class="div-card_character--lenght">
+                        <p>Character lenght</p>
+                        <p id="number-lenght">0</p>
+                    </div>
+                    <div class="div-card_range">
+                        <div class="range-bar"></div>
+                        <input type="range" name="" id="" min="0" max="20" value="0">
+                    </div>
+                </div>
+
+                <div class="div-checkbox">
+                    <div>
+                        <input type="checkbox" name="" id="uppercase">
+                        <label for="uppercase">Include Uppercase Letters</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="" id="lowercase">
+                        <label for="lowercase">Include Lowercase Letters</label>
+                    </div>                    <div>
+                        <input type="checkbox" name="" id="numbers">
+                        <label for="numbers">Include Numbers</label>
+                    </div>                    <div>
+                        <input type="checkbox" name="" id="symbols">
+                        <label for="symbols">Include Symbols</label>
+                    </div>
+                </div>
+
+                <div class="div-strength">
+                    <div>
+                        <p class="div-strength_title">STRENGTH</p>
+                    </div>
+                    <div>
+                        <p id="div-strength_level">MEDIUM</p>
+                        <div class="div-strength_bars">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="generate-btn">
+                        Generate
+                        <div>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="./js/app.js"></script>
+</body>
+</html>
