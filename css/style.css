@@ -7,6 +7,7 @@
   --white-color: #e6e5ea;
   --gray-color: #817d92;
   --background: #18171f;
+  --primary-disabled: #5c7a5f;
 
   /* TYPOGRAPHY */
   --heading-l: 3.2rem;
@@ -151,6 +152,11 @@ input[type="range"]::-moz-range-thumb {
   margin-bottom: 20px;
 }
 
+.div-checkbox div label {
+    cursor: pointer;
+}
+
+
 .div-checkbox div input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
@@ -217,7 +223,13 @@ input[type="checkbox"]:checked {
   cursor: pointer;
 }
 
-.generate-btn:hover {
+.generate-btn:not(.disabled-btn):hover {
   background-color: var(--primary);
   color: var(--background);
+}
+
+.generate-btn.disabled-btn {
+    color: var(--primary-disabled);
+    border-color: var(--primary-disabled);
+    cursor: not-allowed;
 }

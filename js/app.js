@@ -2,11 +2,17 @@ const resultInput = document.querySelector(
   `.div-result_input input[type="text"]`
 );
 
+const copyIcon = document.querySelector(".fa-copy");
+
 const rangeInput = document.querySelector(".div-card_range input");
 const numberLenght = document.querySelector("#number-lenght");
 
 const checkboxInput = document.querySelectorAll(`input[type="checkbox"]`);
 const checkboxArray = Array.from(checkboxInput);
+
+const strengthTextLevel = document.querySelector("#div-strength_level");
+const barsContainer = document.querySelector(".div-strength_bars");
+const barsLevel = Array.from(barsContainer.children);
 
 const generateBtn = document.querySelector(".generate-btn");
 
@@ -138,11 +144,13 @@ const randomNumber = (min, max) => {
 
 // Generate random password
 function generatePassword(passwordLenght) {
+  // Check if the button is disabled
+  if (generateBtn.classList.contains("disabled-btn")) {
+    return;
+  }
+
   const arrayPasswordCharacters = arrayPassword();
   const resultPassword = [];
-
-  //   console.log(arrayPasswordCharacters[5]);
-  //   console.log(passwordLenght);
 
   for (let i = 1; i <= passwordLenght; i++) {
     const letterForPassword =
@@ -151,7 +159,61 @@ function generatePassword(passwordLenght) {
   }
 
   resultInput.value = resultPassword.join("");
+
+  // Generate password level
+  strengthBarsLevel();
 }
+
+// Strength of the bars
+function strengthBarsLevel() {
+  let passwordLevel = 0;
+  let barsSelected = [];
+
+  for (let i = 0; i < checkboxArray.length; i++) {
+    if (checkboxArray[i].checked) {
+      passwordLevel++;
+    }
+  }
+
+  const barsLevelStyle = (barEnd, colorBars, message) => {
+    barsSelected = barsLevel.slice(0, barEnd);
+    barsSelected.forEach((bar) => {
+      bar.style.backgroundColor = `${colorBars}`;
+    });
+    strengthTextLevel.textContent = `${message}`;
+  };
+
+  // Eliminate background color
+  barsLevelStyle(4, "transparent", "");
+
+  switch (passwordLevel) {
+    case 1:
+      barsLevelStyle(1, "#F64A4A", "TOO WEAK!");
+      break;
+    case 2:
+      barsLevelStyle(2, "#FB7C58", "WEAK");
+      break;
+    case 3:
+      barsLevelStyle(3, "#F8CD65", "MEDIUM");
+      break;
+    case 4:
+      barsLevelStyle(4, "#A4FFAF", "STRONG");
+      break;
+    default:
+      break;
+  }
+}
+
+// Logic for check the checkboxes
+const checkTheCheckboxes = () => {
+  for (let i = 0; i < checkboxArray.length; i++) {
+    if (checkboxArray[i].checked) {
+      return generateBtn.classList.remove("disabled-btn");
+    }
+  }
+
+  return generateBtn.classList.add("disabled-btn");
+};
 
 // Events Listeners
 document.addEventListener("DOMContentLoaded", () => {
@@ -170,4 +232,29 @@ document.addEventListener("DOMContentLoaded", () => {
       numberLenght.textContent = 5;
     }
   });
+
+  // Copy the password
+  copyIcon.addEventListener("click", () => {
+    try {
+      navigator.clipboard.writeText(resultInput.value);
+    } catch (err) {
+      console.error("Error with the clipboard API", err);
+    }
+  });
+
+  // Check if any checkbox is empty when page is loaded
+  checkTheCheckboxes();
+
+  // Check if any checkbox is empty
+  checkboxArray.forEach((checkbox) => {
+    checkbox.addEventListener("input", () => {
+      checkTheCheckboxes();
+    });
+  });
+
+  // Update range number after load page
+  numberLenght.textContent = rangeInput.value;
+
+  // Update strength level after load page
+  strengthBarsLevel();
 });
